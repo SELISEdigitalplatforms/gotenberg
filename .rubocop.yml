@@ -1,0 +1,50 @@
+# AllCops
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.0
+
+# Style/FrozenStringLiteralComment
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Layout/LineLength
+Layout/LineLength:
+  Max: 120
+
+# Naming/FileName
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
+# Layout/IndentationWidth
+Layout/IndentationWidth:
+  Width: 2
+
+# Style/StringLiterals
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Lint/UselessAssignment
+Lint/UselessAssignment:
+  Enabled: true
+
+# Metrics/AbcSize
+Metrics/AbcSize:
+  Max: 100
+
+# Metrics/BlockLength
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+# Metrics/MethodLength
+Metrics/MethodLength:
+  Max: 100
+
+# Naming/AccessorMethodName
+Naming/AccessorMethodName:
+  Enabled: false
