@@ -23,6 +23,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Publish to RubyGems
+        if: ${{ steps.release.outputs.release_created }}
         run: |
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
