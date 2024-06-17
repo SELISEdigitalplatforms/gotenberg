@@ -11,14 +11,14 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A simple Ruby client for gotenberg"
   spec.description = "A simple Ruby client for gotenberg"
-  spec.homepage = "https://github.com/SELISEdigitalplatforms/l3-ruby-gem-gotenberg"
+  spec.homepage = "https://github.com/SELISEdigitalplatforms/gotenberg"
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/SELISEdigitalplatforms/l3-ruby-gem-gotenberg"
-  spec.metadata["changelog_uri"] = "https://github.com/SELISEdigitalplatforms/l3-ruby-gem-gotenberg/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/SELISEdigitalplatforms/gotenberg"
+  spec.metadata["changelog_uri"] = "https://github.com/SELISEdigitalplatforms/gotenberg/blob/main/CHANGELOG.md"
   File.basename(__FILE__)
   spec.files = Dir["lib/**/*.rb"]
   spec.bindir = "exe"
