@@ -20,4 +20,4 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/SELISEdigitalplatforms/l3-ruby-gem-gotenberg.git
+Bug reports and pull requests are welcome on GitHub at https://github.com/SELISEdigitalplatforms/gotenberg.git
