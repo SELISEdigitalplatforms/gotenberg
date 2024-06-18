@@ -4,7 +4,8 @@ module Gotenberg
   module Helper # rubocop:disable Style/Documentation
     class ExtensionMissing < StandardError; end
 
-    class PropshaftAsset # rubocop:disable Style/Documentation
+    # Credits: https://github.com/mileszs/wicked_pdf/blob/master/lib/wicked_pdf/wicked_pdf_helper/assets.rb
+    class PropshaftAsset
       attr_reader :asset
 
       def initialize(asset)
@@ -63,6 +64,11 @@ module Gotenberg
       end
     end
 
+    # Returns the base64 encoded content of a static asset.
+    #
+    # @param asset_name [String] the name of the asset
+    # @raise [MissingAsset] if the asset is not found
+    # @return [String] the base64 encoded content of the asset
     def goten_asset_base64(asset_name)
       asset = find_asset(goten_static_asset_path(asset_name))
       raise MissingAsset.new(asset_name, "Could not find asset '#{asset_name}'") if asset.nil?
@@ -71,6 +77,11 @@ module Gotenberg
       "data:#{asset.content_type};base64,#{Rack::Utils.escape(base64)}"
     end
 
+    # Returns the static path of an asset based on its extension.
+    #
+    # @param asset_name [String] the name of the asset
+    # @raise [ExtensionMissing] if the asset extension is missing
+    # @return [String] the static path of the asset
     def goten_static_asset_path(asset_name)
       ext = File.extname(asset_name).delete(".")
 
@@ -86,6 +97,10 @@ module Gotenberg
       determine_static_path(asset_type, asset_name)
     end
 
+    # Returns the compiled path of an asset.
+    #
+    # @param asset_name [String] the name of the asset
+    # @return [String] the compiled path of the asset
     def goten_compiled_asset_path(asset_name)
       Rails.public_path.to_s +
         ActionController::Base.helpers.asset_path(asset_name)
@@ -93,6 +108,12 @@ module Gotenberg
 
     private
 
+    # Determines and returns the static path of an asset.
+    #
+    # @param asset_type [String] the type of the asset (e.g., "javascripts", "stylesheets", "images")
+    # @param asset_name [String] the name of the asset
+    # @raise [MissingAsset] if the asset is not found
+    # @return [String] the static path of the asset
     def determine_static_path(asset_type, asset_name)
       asset_root = Rails.root.join("app", "assets")
       path = asset_root.join(asset_type, asset_name)
@@ -107,7 +128,10 @@ module Gotenberg
       path.to_s
     end
 
-    # Thanks WickedPDF 🙏
+    # Finds and returns the asset for the given path.
+    #
+    # @param path [String] the path of the asset
+    # @return [PropshaftAsset, LocalAsset, Sprockets::Asset, nil] the found asset or nil if not found
     def find_asset(path)
       if Rails.application.assets.respond_to?(:find_asset)
         Rails.application.assets.find_asset(path, base_path: Rails.application.root.to_s)

@@ -48,6 +48,7 @@ module Gotenberg
     #   client = Gotenberg::Client.new("http://localhost:3000")
     #   pdf_content = client.html(htmls, asset_paths, properties)
     #
+    # Credit: https://github.com/jbd0101/ruby-gotenberg-client/blob/master/lib/gotenberg.rb
     def html(htmls, asset_paths, properties = {}) # rubocop:disable Metrics/CyclomaticComplexity
       raise GotenbergDownError unless up?
 
