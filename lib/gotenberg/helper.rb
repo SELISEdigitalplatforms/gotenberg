@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# require_relative "assets"
+
 module Gotenberg
   module Helper # rubocop:disable Style/Documentation
     class ExtensionMissing < StandardError; end
@@ -87,12 +89,7 @@ module Gotenberg
 
       raise ExtensionMissing if ext.empty?
 
-      asset_type =
-        case ext
-        when "js" then "javascripts"
-        when "css" then "stylesheets"
-        else "images"
-        end
+      asset_type = Assets::ASSET_TYPES.fetch(ext)
 
       determine_static_path(asset_type, asset_name)
     end
