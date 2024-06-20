@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.1...gotenberg/v1.0.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* Add usage documentation ([#13](https://github.com/SELISEdigitalplatforms/gotenberg/issues/13)) ([67a3e75](https://github.com/SELISEdigitalplatforms/gotenberg/commit/67a3e757e634c5ec72da9665a2cab5ab0c423760))
+
 ## [1.0.1](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.0...gotenberg/v1.0.1) (2024-06-17)
 
 
