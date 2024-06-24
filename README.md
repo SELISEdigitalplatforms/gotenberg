@@ -6,11 +6,21 @@
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add gotenberg
+```bash
+bundle add gotenberg
+```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install gotenberg
+```bash
+gem install gotenberg
+```
+
+In your `Gemfile`
+
+```bash
+gem 'gotenberg'
+```
 
 ## Usage
 

@@ -49,7 +49,7 @@ module Gotenberg
     #   pdf_content = client.html(htmls, asset_paths, properties)
     #
     # Credit: https://github.com/jbd0101/ruby-gotenberg-client/blob/master/lib/gotenberg.rb
-    def html(htmls, asset_paths, properties = {}) # rubocop:disable Metrics/CyclomaticComplexity
+    def html(htmls, asset_paths, properties = {})
       raise GotenbergDownError unless up?
 
       raise IndexFileMissing unless (htmls.keys & ["index", :index]).any?
@@ -67,6 +67,12 @@ module Gotenberg
       # Gotenberg requires all files to be in the same directory
       asset_paths.each do |path|
         FileUtils.cp(path, dir_path)
+        next unless path.split(".").last == "css"
+
+        # This preprocessing is necessary for the gotenberg
+        raw_css = File.read(path)
+        preprocessed = raw_css.gsub("url(/assets/", "url(").gsub("url(/", "url(")
+        File.write(path, preprocessed)
       end
 
       # Rejecting .. and .
