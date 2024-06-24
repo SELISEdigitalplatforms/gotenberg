@@ -13,12 +13,15 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Max: 120
 
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 # Naming/FileName
 Naming/FileName:
   Enabled: true
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
 
 # Layout/IndentationWidth
 Layout/IndentationWidth:
@@ -39,7 +42,7 @@ Metrics/AbcSize:
 # Metrics/BlockLength
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*.rb'
+    - "spec/**/*.rb"
 
 # Metrics/MethodLength
 Metrics/MethodLength:
