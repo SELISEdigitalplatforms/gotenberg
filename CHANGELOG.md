@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.2...gotenberg/v1.0.3) (2024-06-24)
+
+
+### Bug Fixes
+
+* Add asset mappers for the static assets ([#15](https://github.com/SELISEdigitalplatforms/gotenberg/issues/15)) ([#16](https://github.com/SELISEdigitalplatforms/gotenberg/issues/16)) ([6b07a0f](https://github.com/SELISEdigitalplatforms/gotenberg/commit/6b07a0f813d808b7196be9c2ba151cb7fb9e0662))
+
 ## [1.0.2](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.1...gotenberg/v1.0.2) (2024-06-20)
 
 
