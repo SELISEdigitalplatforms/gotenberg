@@ -24,7 +24,7 @@ module Gotenberg
     # Convert HTML files to PDF and write it to the output file
     #
     # @param htmls [Hash{Symbol => String}] A hash with the file name as the key and the HTML content as the value
-    # @param asset_paths [Array<String>] Paths to the asset files (like CSS, images) required by the HTML files
+    # @param asset_paths [Array<String>] Optional args, paths to the asset files (like CSS, images) required by the HTML files
     # @param properties [Hash] Additional properties for PDF conversion
     # @option properties [Float] :paperWidth The width of the paper
     # @option properties [Float] :paperHeight The height of the paper
@@ -49,7 +49,7 @@ module Gotenberg
     #   pdf_content = client.html(htmls, asset_paths, properties)
     #
     # Credit: https://github.com/jbd0101/ruby-gotenberg-client/blob/master/lib/gotenberg.rb
-    def html(htmls, asset_paths, properties = {})
+    def html(htmls, asset_paths = [], properties = {})
       raise GotenbergDownError unless up?
 
       raise IndexFileMissing unless (htmls.keys & ["index", :index]).any?
