@@ -52,4 +52,3 @@ Provide any additional information that may help us understand the issue and how
 ## Contact Information
 
 (Optional) If you would like to be contacted regarding this issue, please provide your preferred contact method.
-
