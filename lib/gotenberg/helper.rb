@@ -107,7 +107,6 @@ module Gotenberg
     #
     # @param asset_name [String] the name of the asset
     # @return [String] the compiled name of the asset
-
     def goten_compiled_asset_name(asset_name)
       path = goten_compiled_asset_path(asset_name)
       path.split("/").last
