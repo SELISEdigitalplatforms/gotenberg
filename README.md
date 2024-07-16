@@ -1,6 +1,13 @@
 # gotenberg
 
-`gotenberg` is a simple Ruby client for gotenberg
+According to the official documentation, Gotenberg is a Docker-powered stateless API for PDF files. It offers a developer-friendly API that utilizes powerful tools like Chromium and LibreOffice to convert various document formats (such as HTML, Markdown, Word, Excel, and more) into PDF files and beyond. The gotenberg gem is a simple Ruby client for interacting with this API. Gotenberg provides multiple APIs for tasks such as converting HTML to PDF, URL to PDF, Markdown to PDF, and more. 
+
+Currently, this gem only supports the HTML conversion to PDF and health endpoint APIs. This gem seamlessly integrates the Rails asset pipeline with Gotenberg's requirements for HTML and assets and includes useful helper methods for assets which can be used in `.erb` files or other Ruby classes.
+
+Please note that Gotenberg needs to be deployed on your server or VPC and can function as a stateless, central PDF generation engine for all of your applications. For more information and installation guides, please visit the [official website](https://gotenberg.dev).
+
+**High-level flow diagram:**
+![Alt text](./docs/diagram.png)
 
 ## Installation
 
