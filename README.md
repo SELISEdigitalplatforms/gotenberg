@@ -131,7 +131,7 @@ gem 'gotenberg'
         src: url('AvenirNextLTPro-Regular.otf?base64, <base64_font_data>') format('opentype');
        }
    ```
-      2.Use `goten_static_asset_path` to generates a URL or path to the static version of the asset, typically in its original form without any modifications from the build process. It points to the location of the raw, uncompiled version of the font files.
+      2.Use `goten_static_asset_path` to generates a URL or path to the static version of the fonts, typically in its original form without any modifications from the build process.
    ```html
       Example:
       goten_static_asset_path('AvenirNextLTPro-Regular.otf'),
@@ -146,7 +146,12 @@ gem 'gotenberg'
 	    margin-bottom: 60px;
 	   }
     ```
-
+    2. For different pdf if you need different layout and styling, make multiple scss or css files for each pdf.
+	 ```html
+	   Example:
+	   goten_compiled_asset_path('pdf/pdf1.css'),
+    goten_compiled_asset_path('pdf/pdf2.css'),
+	```
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SELISEdigitalplatforms/gotenberg.git
