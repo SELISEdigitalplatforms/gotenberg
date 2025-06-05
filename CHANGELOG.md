@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.4](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.4...gotenberg/v1.0.4) (2025-06-05)
+
 ## [1.0.3](https://github.com/SELISEdigitalplatforms/gotenberg/compare/gotenberg/v1.0.2...gotenberg/v1.0.3) (2024-06-24)
 
 
