@@ -66,26 +66,13 @@ module Gotenberg
       end
     end
 
-    # Returns the base64 encoded content of an asset.
+    # Returns the base64 encoded content of a static asset.
     #
     # @param asset_name [String] the name of the asset
     # @raise [MissingAsset] if the asset is not found
     # @return [String] the base64 encoded content of the asset
     def goten_asset_base64(asset_name)
       asset = find_asset(goten_static_asset_path(asset_name))
-      raise MissingAsset.new(asset_name, "Could not find asset '#{asset_name}'") if asset.nil?
-
-      base64 = Base64.encode64(asset.to_s).delete("\n")
-      "data:#{asset.content_type};base64,#{Rack::Utils.escape(base64)}"
-    end
-
-    # Returns the base64 encoded content of a static asset.
-    #
-    # @param asset_name [String] the name of the asset
-    # @raise [MissingAsset] if the asset is not found
-    # @return [String] the base64 encoded content of the asset
-    def goten_static_asset_base64(asset_name)
-      asset = LocalAsset.new(goten_static_asset_path(asset_name))
       raise MissingAsset.new(asset_name, "Could not find asset '#{asset_name}'") if asset.nil?
 
       base64 = Base64.encode64(asset.to_s).delete("\n")
