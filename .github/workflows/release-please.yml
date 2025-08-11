@@ -11,7 +11,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
       # Checkout code if release was created
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: ${{ steps.release.outputs.release_created }}
       # Setup ruby if a release was created
       - uses: ruby/setup-ruby@v1
