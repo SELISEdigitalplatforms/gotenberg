@@ -1,22 +1,47 @@
 # Releasing gotenberg 🥂
 
-This document explains releasing process for all gotenberg gems.
+This document explains the release process for the gotenberg gem.
 
-### Releasing
+## Automated Release Process
 
-For releasing new version of `gotenberg`, this is the procedure:
+The easiest way to release a new version is to use the automated release script:
 
-1. Update `CHANGELOG.md`
-2. Update `VERSION` file with target version
-3. Run `rake release:commit_version`
-4. Create pull request with all that ([example](https://github.com/SELISEdigitalplatforms/l3-ruby-gem-gotenberg/pull/69))
-5. Merge the pull request when CI is green
-6. Ensure you have latest changes locally
-7. Run `rake release:tag_version`
-8. Push tag to upstream
-9. Run `rake release:watch` and watch GitHub Actions push to RubyGems.org
+```bash
+bin/release
+```
 
-### Packaging
-<!-- TODO -->
-### Packaging and installing locally
-<!-- TODO -->
+This script will:
+1. ✅ Check that you're on the main branch
+2. ✅ Verify your working directory is clean
+3. 📝 Prompt you for the new version number
+4. 🔄 Update the version in `lib/gotenberg/version.rb`
+5. 📝 Update the changelog with the new version and today's date
+6. 📝 Commit all changes
+7. 🏷️ Create and push a git tag
+8. 📦 Build the gem and push it to RubyGems.org
+
+## Manual Release Process
+
+If you prefer to release manually, follow these steps:
+
+1. Update `CHANGELOG.md` with your changes
+2. Update `lib/gotenberg/version.rb` with the target version
+3. Commit your changes
+4. Create and push a git tag: `git tag -a v1.0.4 -m "Release version 1.0.4"`
+5. Push the tag: `git push origin v1.0.4`
+6. Build the gem: `gem build gotenberg.gemspec`
+7. Push to RubyGems: `gem push gotenberg-1.0.4.gem`
+
+## Prerequisites
+
+- You must be on the `main` branch
+- Your working directory must be clean (no uncommitted changes)
+- You must have write access to the repository
+- You must have RubyGems credentials configured
+
+## Version Format
+
+Versions should follow semantic versioning: `x.y.z`
+- `x` - Major version (breaking changes)
+- `y` - Minor version (new features, backward compatible)
+- `z` - Patch version (bug fixes, backward compatible)

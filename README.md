@@ -1,6 +1,6 @@
 # gotenberg
 
-According to the official documentation, Gotenberg is a Docker-powered stateless API for PDF files. It offers a developer-friendly API that utilizes powerful tools like Chromium and LibreOffice to convert various document formats (such as HTML, Markdown, Word, Excel, and more) into PDF files and beyond. The gotenberg gem is a simple Ruby client for interacting with this API. Gotenberg provides multiple APIs for tasks such as converting HTML to PDF, URL to PDF, Markdown to PDF, and more. 
+According to the official documentation, Gotenberg is a Docker-powered stateless API for PDF files. It offers a developer-friendly API that utilizes powerful tools like Chromium and LibreOffice to convert various document formats (such as HTML, Markdown, Word, Excel, and more) into PDF files and beyond. The gotenberg gem is a simple Ruby client for interacting with this API. Gotenberg provides multiple APIs for tasks such as converting HTML to PDF, URL to PDF, Markdown to PDF, and more.
 
 Currently, this gem only supports the HTML conversion to PDF and health endpoint APIs. This gem seamlessly integrates the Rails asset pipeline with Gotenberg's requirements for HTML and assets and includes useful helper methods for assets which can be used in `.erb` files or other Ruby classes.
 
@@ -123,6 +123,36 @@ gem 'gotenberg'
    2. `GOTENBERG_API_BASIC_AUTH_USERNAME='username'`
    3. `GOTENBERG_API_BASIC_AUTH_PASSWORD='password'`
 
+9. Fonts
+	1. Use `Base64` encoding so that the font file is embedded directly in the CSS file, eliminating the need for an external font file.
+   ```html
+      Example:
+      @font-face {
+        font-family: "AvenirNextLTPro-Regular";
+        src: url('AvenirNextLTPro-Regular.otf?base64, <base64_font_data>') format('opentype');
+       }
+   ```
+      2.Use `goten_static_asset_path` to generates a URL or path to the static version of the fonts, typically in its original form without any modifications from the build process.
+   ```html
+      Example:
+      goten_static_asset_path('AvenirNextLTPro-Regular.otf'),
+   ```
+
+10. Styling
+	1. By default, Pdf Layout has 1 inch margin in all the sides, to modify use `@page` css property.
+    ```html
+	   Example:
+	   @page {
+	    margin-top: 100px;
+	    margin-bottom: 60px;
+	   }
+    ```
+    2. For different pdf if you need different layout and styling, make multiple scss or css files for each pdf.
+	 ```html
+	   Example:
+	   goten_compiled_asset_path('pdf/pdf1.css'),
+    goten_compiled_asset_path('pdf/pdf2.css'),
+	```
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SELISEdigitalplatforms/gotenberg.git
