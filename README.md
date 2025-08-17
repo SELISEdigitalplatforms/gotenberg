@@ -68,8 +68,9 @@ gem 'gotenberg'
 2. `goten_static_asset_path` will return the absolute path to the static assets inside the `app/assets/` based on the extension.
 3. `goten_compiled_asset_path` will return the absolute path to the precompiled assets inside the `public/assets`
 4. `goten_asset_base64` will return the base64 encoded of the assets.
-5. All these methods will be available automatically in the `.erb` files but if you need in the `.rb` files, then you will need to include `include Gotenberg::Helper`
-6. Both `header` and `footer` have to be a complete HTML document
+5. `goten_static_asset_base64` will return the base64 encoded of the static assets.
+6. All these methods will be available automatically in the `.erb` files but if you need in the `.rb` files, then you will need to include `include Gotenberg::Helper`
+7. Both `header` and `footer` have to be a complete HTML document
 
    1. `header.html`
 
