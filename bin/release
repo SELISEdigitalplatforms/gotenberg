@@ -4,7 +4,7 @@
 require "fileutils"
 require "open3"
 # Release script for gotenberg gem
-# This script builds and pushes the gem to RubyGems.org
+# This script builds, tags, and pushes the gem to RubyGems.org
 class Release
   def initialize
     @gem_name = "gotenberg"
@@ -20,7 +20,10 @@ class Release
     # Build and push gem
     build_and_push_gem(current_version)
 
-    puts "🎉 Gem #{current_version} published to RubyGems.org successfully!"
+    # Create and push git tag
+    create_and_push_tag(current_version)
+
+    puts "🎉 Gem #{current_version} published to RubyGems.org and tagged successfully!"
   end
 
   private
@@ -51,6 +54,14 @@ class Release
       puts "❌ Error: Gem file #{gem_file} was not created"
       exit 1
     end
+  end
+
+  def create_and_push_tag(version)
+    tag = "#{@gem_name}/v#{version}"
+    puts "🏷️  Creating git tag: #{tag}"
+    run_command("git tag #{tag}")
+    run_command("git push origin #{tag}")
+    puts "✅ Tag pushed: #{tag}"
   end
 
   def run_command(command)
