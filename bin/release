@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require "open3"
+# Release script for gotenberg gem
+# This script builds and pushes the gem to RubyGems.org
+class Release
+  def initialize
+    @gem_name = "gotenberg"
+  end
+
+  def run
+    puts "🚀 Starting gem release process for #{@gem_name}..."
+
+    # Get current version
+    current_version = get_current_version
+    puts "Current version: #{current_version}"
+
+    # Build and push gem
+    build_and_push_gem(current_version)
+
+    puts "🎉 Gem #{current_version} published to RubyGems.org successfully!"
+  end
+
+  private
+
+  def get_current_version
+    version_file = "lib/gotenberg/version.rb"
+    content = File.read(version_file)
+    match = content.match(/VERSION = "([^"]+)"/)
+    match ? match[1] : raise("Could not find VERSION in #{version_file}")
+  end
+
+  def build_and_push_gem(version)
+    puts "📦 Building gem..."
+    run_command("gem build #{@gem_name}.gemspec")
+
+    gem_file = "#{@gem_name}-#{version}.gem"
+    if File.exist?(gem_file)
+      puts "✅ Built gem: #{gem_file}"
+
+      puts "📤 Pushing to RubyGems..."
+      run_command("gem push #{gem_file}")
+      puts "✅ Pushed gem to RubyGems"
+
+      # Clean up gem file
+      FileUtils.rm(gem_file)
+      puts "🧹 Cleaned up gem file"
+    else
+      puts "❌ Error: Gem file #{gem_file} was not created"
+      exit 1
+    end
+  end
+
+  def run_command(command)
+    puts "Running: #{command}"
+    stdout, stderr, status = Open3.capture3(command)
+
+    unless status.success?
+      puts "❌ Command failed: #{command}"
+      puts "Error: #{stderr}" unless stderr.empty?
+      exit 1
+    end
+
+    puts stdout unless stdout.empty?
+  end
+end
+
+Release.new.run if __FILE__ == $PROGRAM_NAME
