@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38
         id: release
       # Checkout code if release was created
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         if: ${{ steps.release.outputs.release_created }}
       # Setup ruby if a release was created
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@09a7688d3b55cf0e976497ff046b70949eeaccfd
       
         with:
           # Not needed with a .ruby-version file
